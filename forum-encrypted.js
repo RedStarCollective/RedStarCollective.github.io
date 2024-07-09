@@ -1,52 +1,4 @@
-// Generate a key for encryption
-async function generateKey() {
-    return await window.crypto.subtle.generateKey(
-        {
-            name: "AES-GCM",
-            length: 256,
-        },
-        true,
-        ["encrypt", "decrypt"]
-    );
-}
-
-// Encrypt the data
-async function encryptData(data, key) {
-    const encodedData = new TextEncoder().encode(data);
-    const iv = window.crypto.getRandomValues(new Uint8Array(12));
-    const encryptedData = await window.crypto.subtle.encrypt(
-        {
-            name: "AES-GCM",
-            iv: iv
-        },
-        key,
-        encodedData
-    );
-    return {
-        iv: Array.from(iv),
-        data: Array.from(new Uint8Array(encryptedData))
-    };
-}
-
-// Decrypt the data
-async function decryptData(encryptedData, key) {
-    const decryptedData = await window.crypto.subtle.decrypt(
-        {
-            name: "AES-GCM",
-            iv: new Uint8Array(encryptedData.iv)
-        },
-        key,
-        new Uint8Array(encryptedData.data)
-    );
-    return new TextDecoder().decode(decryptedData);
-}
-
-let encryptionKey;
-
-// Initialize the encryption key
-async function initializeEncryption() {
-    encryptionKey = await generateKey();
-}
+// ... (previous encryption functions remain the same) ...
 
 // Function to load forum threads
 async function loadThreads() {
@@ -54,12 +6,14 @@ async function loadThreads() {
     const forumThreads = document.getElementById('forum-threads');
     forumThreads.innerHTML = '';
 
-    for (const thread of threads) {
+    for (let i = 0; i < threads.length; i++) {
+        const thread = threads[i];
         const threadElement = document.createElement('div');
         threadElement.className = 'forum-thread';
         threadElement.innerHTML = `
             <h3>${await decryptData(thread.title, encryptionKey)}</h3>
             <p>${await decryptData(thread.content, encryptionKey)}</p>
+            <button onclick="deleteThread(${i})">Delete</button>
         `;
         forumThreads.appendChild(threadElement);
     }
@@ -76,16 +30,12 @@ async function addThread(title, content) {
     await loadThreads();
 }
 
-// Event listener for the new thread form
-document.getElementById('new-thread-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const title = document.getElementById('thread-title').value;
-    const content = document.getElementById('thread-content').value;
-    await addThread(title, content);
-    this.reset();
-});
-
-// Initialize encryption and load threads when the page loads
-initializeEncryption().then(() => {
+// Function to delete a thread
+function deleteThread(index) {
+    const threads = JSON.parse(localStorage.getItem('forumThreads')) || [];
+    threads.splice(index, 1);
+    localStorage.setItem('forumThreads', JSON.stringify(threads));
     loadThreads();
-});
+}
+
+// ... (rest of the code remains the same) ...

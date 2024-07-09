@@ -16,16 +16,16 @@ function displayRandomAlert() {
         <p>${randomAlert.description}</p>
         <button onclick="respondToAlert('${randomAlert.type}', '${randomAlert.location}')">Respond</button>
     `;
+    alertElement.style.display = 'block';
 }
 
 function respondToAlert(type, location) {
     console.log(`Responding to ${type} alert in ${location}`);
-    // In a real application, this would send a secure message to coordinators
     alert('Response logged. A coordinator will contact you securely with further instructions.');
 }
 
 // Display a random alert when the page loads
-displayRandomAlert();
+window.addEventListener('load', displayRandomAlert);
 
 // Refresh the alert every 5 minutes
 setInterval(displayRandomAlert, 300000);
