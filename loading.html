@@ -88,12 +88,12 @@
         function checkAccessCode() {
             const accessCode = document.getElementById('accessCode').value;
             if (accessCode === 'revolution') { // Replace 'revolution' with your desired password
-                localStorage.setItem('authenticated', 'true');
-                window.location.href = 'index.html';
+                showLoadingScreen();
             } else {
                 alert('Invalid access code. Access denied.');
             }
         }
+
         function showLoadingScreen() {
             document.getElementById('loadingScreen').style.display = 'block';
             simulateLoading();
@@ -123,6 +123,5 @@
             }, 12000); // Total loading time: 12 seconds
         }
     </script>
-    
 </body>
 </html>
