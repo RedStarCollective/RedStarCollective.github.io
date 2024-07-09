@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Star Collective</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-title">
+                    <svg class="logo" viewBox="0 0 100 100">
+                        <polygon points="50,5 61,40 97,40 68,62 79,97 50,75 21,97 32,62 3,40 39,40" fill="#0a0a0a"/>
+                    </svg>
+                    <h1 class="glitch">Red Star Collective</h1>
+                </div>
+                <div class="lang-switcher">
+                    <button onclick="changeLanguage('en')">EN</button>
+                    <button onclick="changeLanguage('es')">ES</button>
+                    <button onclick="changeLanguage('zh')">中文</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="manifesto.html">Manifesto</a></li>
+                <li><a href="praxis.html">Praxis</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="resources.html">Resources</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="content">
+            <h2>Welcome, Comrade</h2>
+            <p>You have reached the digital gathering point of the Red Star Collective. For the safety and security of all members, sensitive information is not publicly displayed.</p>
+            <p>To access secure communications and resources, please use the channel below. Remember to follow all security protocols.</p>
+            <button class="button" onclick="openTerminal()">Access Secure Communication Channel</button>
+        </div>
+        
+        <footer>
+            <p>"Solidarity Forever"</p>
+            <p>Security through collective action and vigilance.</p>
+        </footer>
+    </div>
+
+    <div id="terminal">
+        <div id="terminalOutput"></div>
+        <input type="text" id="terminalInput" placeholder="Enter command...">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+:root {
+    --primary-red: #cc0000;
+    --dark-red: #8b0000;
+    --black: #0a0a0a;
+    --gold: #ffd700;
+    --off-white: #f0f0f0;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    line-height: 1.6;
+    color: var(--off-white);
+    background-color: var(--black);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: var(--primary-red);
+    padding: 1rem;
+    position: relative;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 2.5em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0;
+    color: var(--black);
+    animation: glitch 1s linear infinite;
+}
+
+@keyframes glitch {
+    2%,64%{
+        transform: translate(2px,0) skew(0deg);
+    }
+    4%,60%{
+        transform: translate(-2px,0) skew(0deg);
+    }
+    62%{
+        transform: translate(0,0) skew(5deg); 
+    }
+}
+
+nav {
+    background-color: var(--dark-red);
+    padding: 0.5rem 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: var(--off-white);
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--gold);
+}
+
+.content {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    margin-top: 20px;
+    border: 1px solid var(--primary-red);
+    position: relative;
+}
+
+h2 {
+    color: var(--primary-red);
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: var(--gold);
+    border-top: 1px solid var(--primary-red);
+    padding: 20px 0;
+}
+
+#terminal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    height: 300px;
+    background-color: var(--dark-red);
+    color: var(--off-white);
+    padding: 20px;
+    border: 2px solid var(--primary-red);
+    z-index: 1000;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 5px var(--primary-red);
+    overflow: hidden;
+    animation: textShadow 1.6s infinite;
+}
+
+#terminal::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
+
+#terminal::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+    animation: flicker 0.15s infinite;
+}
+
+@keyframes textShadow {
+    0% {
+        text-shadow: 0.4389924193300864px 0 1px rgba(0,30,255,0.5), -0.4389924193300864px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+    }
+    5% {
+        text-shadow: 2.7928974010788217px 0 1px rgba(0,30,255,0.5), -2.7928974010788217px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+    }
+    100% {
+        text-shadow: -0.5046279838205923px 0 1px rgba(0,30,255,0.5), 0.5046279838205923px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+    }
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0.27861;
+    }
+    5% {
+        opacity: 0.34769;
+    }
+    100% {
+        opacity: 0.37;
+    }
+}
+
+#terminalOutput {
+    height: 250px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+}
+
+#terminalInput {
+    width: 100%;
+    background-color: transparent;
+    color: var(--off-white);
+    border: none;
+    border-top: 1px solid var(--primary-red);
+    outline: none;
+    font-family: 'Courier New', monospace;
+}
+
+.button {
+    background-color: var(--primary-red);
+    color: var(--off-white);
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--dark-red);
+}
+
+.lang-switcher {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.lang-switcher button {
+    background-color: transparent;
+    color: var(--black);
+    border: 1px solid var(--black);
+    padding: 5px 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lang-switcher button:hover {
+    background-color: var(--black);
+    color: var(--primary-red);
+}
