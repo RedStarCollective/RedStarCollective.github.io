@@ -299,3 +299,27 @@ body.secure-connection::before {
         transform: scale(1.1);
     }
 }
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 5px 10px;
+}
+
+.alert {
+    background-color: var(--primary-red);
+    color: var(--off-white);
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.alert h3 {
+    margin-top: 0;
+}
