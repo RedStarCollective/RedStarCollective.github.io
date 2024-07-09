@@ -103,6 +103,11 @@ nav ul li a:hover {
     margin-top: 20px;
     border: 1px solid var(--primary-red);
     position: relative;
+    overflow: visible; /* Changed from hidden to visible */
+}
+
+.content::before {
+    content: none;
 }
 
 h2 {
@@ -252,14 +257,6 @@ footer {
     overflow: hidden;
 }
 
-@keyframes securePulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-}
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -328,8 +325,9 @@ body {
     color: var(--primary-red);
 }
 
-.content, .content::before, .content::after {
-    background: none;
-    background-color: transparent;
+.popup {
+    /* ... other styles ... */
+    z-index: 2000; /* Increased z-index */
 }
+
 /* Rest of your existing styles */
