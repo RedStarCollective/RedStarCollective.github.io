@@ -21,7 +21,25 @@ function displayRandomAlert() {
 
 function respondToAlert(type, location) {
     console.log(`Responding to ${type} alert in ${location}`);
-    alert('Response logged. A coordinator will contact you securely with further instructions.');
+    showPopup('Response logged. A coordinator will contact you securely with further instructions.');
+}
+
+function showPopup(message) {
+    const popup = document.createElement('div');
+    popup.className = 'popup';
+    popup.innerHTML = `
+        <div class="popup-content">
+            <p>${message}</p>
+            <button class="close-popup" onclick="closePopup(this.parentNode.parentNode)">Close</button>
+        </div>
+    `;
+    document.body.appendChild(popup);
+    popup.style.display = 'block';
+}
+
+function closePopup(popup) {
+    popup.style.display = 'none';
+    document.body.removeChild(popup);
 }
 
 // Display a random alert when the page loads

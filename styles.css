@@ -252,18 +252,6 @@ footer {
     overflow: hidden;
 }
 
-.content::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(0,255,0,0.1) 0%, transparent 70%);
-    animation: securePulse 4s ease-in-out infinite;
-    pointer-events: none;
-}
-
 @keyframes securePulse {
     0%, 100% {
         transform: scale(1);
@@ -305,5 +293,38 @@ body::after {
 body {
     background-image: none !important;
 }
+.popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--dark-red);
+    border: 2px solid var(--primary-red);
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(204, 0, 0, 0.5);
+    max-width: 80%;
+    width: 300px;
+}
 
+.popup-content {
+    color: var(--off-white);
+    text-align: center;
+}
+
+.close-popup {
+    display: block;
+    margin-top: 15px;
+    padding: 5px 10px;
+    background-color: var(--primary-red);
+    color: var(--off-white);
+    border: none;
+    cursor: pointer;
+}
+
+.close-popup:hover {
+    background-color: var(--off-white);
+    color: var(--primary-red);
+}
 /* Rest of your existing styles */
