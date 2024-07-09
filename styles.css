@@ -296,3 +296,14 @@ nav ul li {
 .alert h3 {
     margin-top: 0;
 }
+
+body::before,
+body::after {
+    content: none !important;
+}
+
+body {
+    background-image: none !important;
+}
+
+/* Rest of your existing styles */
