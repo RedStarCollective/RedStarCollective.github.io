@@ -93,12 +93,12 @@
                 alert('Invalid access code. Access denied.');
             }
         }
-
+    
         function showLoadingScreen() {
             document.getElementById('loadingScreen').style.display = 'block';
             simulateLoading();
         }
-
+    
         function simulateLoading() {
             const loadingTexts = [
                 "Establishing secure connection...",
@@ -115,10 +115,10 @@
                 loadingTextElement.textContent = loadingTexts[index];
                 index = (index + 1) % loadingTexts.length;
             }, 2000);
-
+    
             setTimeout(() => {
                 clearInterval(intervalId);
-                localStorage.setItem('authenticated', 'true');
+                sessionStorage.setItem('authenticated', 'true');
                 window.location.href = 'index.html';
             }, 12000); // Total loading time: 12 seconds
         }
