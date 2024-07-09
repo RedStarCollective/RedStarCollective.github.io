@@ -327,4 +327,9 @@ body {
     background-color: var(--off-white);
     color: var(--primary-red);
 }
+
+.content, .content::before, .content::after {
+    background: none;
+    background-color: transparent;
+}
 /* Rest of your existing styles */
